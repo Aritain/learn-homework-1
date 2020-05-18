@@ -15,12 +15,27 @@
 
 """
 
+def check_strings(str1, str2):
+	"""
+	! Не очень понял как можно проверить 1-е условие,
+	! ведь любой ввод в консоли будет иметь тип str(если не поменять руками),
+	! либо есть какой-то способ
+	"""
+	if isinstance(str1, str) == False or isinstance(str2, str) == False:
+		return 0
+	elif str1 == str2:
+		return 1
+	elif str1 != str2 and len(str1) > len(str2):
+		return 2
+	elif str1 != str2 and str2 == 'learn':
+		return 3
+	else:
+		return None
+
 def main():
-    """
-    Эта функция вызывается автоматически при запуске скрипта в консоли
-    В ней надо заменить pass на ваш код
-    """
-    pass
+	str1 = input('Введите первую строку: ')
+	str2 = input('Введите вторую строку: ')
+	print(check_strings(str1, str2))
     
 if __name__ == "__main__":
     main()
