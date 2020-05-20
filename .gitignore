@@ -1,5 +1,6 @@
 settings.py
 bot.log
+.8_ephem_bot.py.swp
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

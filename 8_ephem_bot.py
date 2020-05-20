@@ -32,8 +32,11 @@ def show_constellation(update, context):
 	current_date = f"{datetime.datetime.now():%Y/%m/%d}"
 	planet = update.message.text.split()[1]
 	try:
+		# Делаем какую-то переменную с вводом пользователя и сегодняшней датой (не знаю как это работает, но работает)
 		planet_today = getattr(ephem, planet)(current_date)
+		# Получаем список созвездий, конвертим его из tuple в list
 		constellations = list(ephem.constellation(planet_today))
+		# К сожалению ничего не знаю может ли планета быть в 3-х созвездиях, но допустим что не может
 		update.message.reply_text(f'Сегодня данная планета находится в созвездиях {constellations[0]} и {constellations[1]}.')
 	except AttributeError:
 		update.message.reply_text('Имя планеты не найдено, попробуйте снова.')
