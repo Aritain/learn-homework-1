@@ -24,12 +24,13 @@ def ask_user():
 	}
 	while True:
 		user_input = input('Введите вопрос:\r\n')
-		if user_input == 'Стоп': break
-		try:
-			print(q_a[user_input], end = '\r\n\r\n')
-		except:
+		if user_input == 'Стоп': 
+			break
+		answer = q_a.get(user_input)
+		if answer != None:
+			print(q_a.get(user_input), end = '\r\n\r\n')
+		else:
 			print('Вопрос не найден!\r\n')
-		
-    
+
 if __name__ == "__main__":
-    ask_user()
+	ask_user()

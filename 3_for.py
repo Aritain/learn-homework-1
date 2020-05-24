@@ -12,14 +12,14 @@
 
 def school_average(classes):
 	students_quantity, students_scores = 0, 0
-	for elem in classes:
-		students_quantity += len(elem['scores'])
-		students_scores += sum(elem['scores'])
-	print (f'Средний балл по всей школе составляет {round(students_scores/students_quantity,2)}\r\n')
+	all_scores = [score for item in classes for score in item['scores']]
+	average_score = round(sum(all_scores)/len(all_scores),2)
+	print (f'Средний балл по всей школе составляет {average_score}\r\n')
 
 def class_average(classes):
 	for elem in classes:
-		print(f"Средний бал по классу {elem['school_class']} составляет {round(sum(elem['scores'])/len(elem['scores']),2)}")
+		average_class_score = round(sum(elem['scores'])/len(elem['scores']),2)
+		print(f"Средний бал по классу {elem['school_class']} составляет {average_class_score}")
 
 def main():
 	classes = [
@@ -33,4 +33,4 @@ def main():
 	class_average(classes)
     
 if __name__ == "__main__":
-    main()
+	main()

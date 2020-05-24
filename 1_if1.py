@@ -35,10 +35,10 @@ def main():
 		try:
 			age = int(age)
 			break
-		except:
+		except ValueError:
 			print('Введите числовое значение!')
 	occupation = get_occupation(age)
-	print (occupation)
+	print(occupation)
 
 if __name__ == "__main__":
-    main()
+	main()
