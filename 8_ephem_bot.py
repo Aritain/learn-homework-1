@@ -30,14 +30,14 @@ def greet_user(update, context):
 # Функция-обработчик команды /planet
 def show_constellation(update, context):
 	current_date = f"{datetime.datetime.now():%Y/%m/%d}"
-	planet = update.message.text.split()[1]
+	command, planet = update.message.text.split()
 	try:
 		# Делаем какую-то переменную с вводом пользователя и сегодняшней датой (не знаю как это работает, но работает)
 		planet_today = getattr(ephem, planet)(current_date)
 		# Получаем список созвездий, конвертим его из tuple в list
-		constellations = list(ephem.constellation(planet_today))
+		constellation1, constellation2 = list(ephem.constellation(planet_today))
 		# К сожалению ничего не знаю может ли планета быть в 3-х созвездиях, но допустим что не может
-		update.message.reply_text(f'Сегодня данная планета находится в созвездиях {constellations[0]} и {constellations[1]}.')
+		update.message.reply_text(f'Сегодня данная планета находится в созвездиях {constellation1} и {constellation2}.')
 	except AttributeError:
 		update.message.reply_text('Имя планеты не найдено, попробуйте снова.')
 	
@@ -47,7 +47,7 @@ def talk_to_me(update, context):
 
 def main():
 	# Объявляем бота с полученным токеном
-	mybot = Updater(settings.API_KEY, use_context = True)
+	mybot = Updater(settings.API_KEY, use_context=True)
 
 	# Объявление диспетчера и описание хендлеров
 	dp = mybot.dispatcher
